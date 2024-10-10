@@ -9,8 +9,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: Row(
         children: [
           Image.asset(
-            '../assets/logo/metro_logo_desenho.png', 
-            height: 50, 
+            '../assets/logo/metro_logo.png', 
+            height: 100, 
           ),
           const SizedBox(width: 8), // Espaçamento entre o logo e o título
           const Text('Metrô Web'), // Título da AppBar (a mudar)
@@ -18,7 +18,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       actions: [
         IconButton(
-          icon: const Icon(Icons.train), // só pra "marcar" espaço
+          icon: const Icon(Icons.construction), // só pra "marcar" espaço
           onPressed: () {
             
           },
