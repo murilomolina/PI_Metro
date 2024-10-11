@@ -18,12 +18,9 @@ class CardList extends StatelessWidget {
         const Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Text(
-                "Equipamentos próximos a data de validade/inspeção",
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
+            Text(
+              "Equipamentos próximos a data de validade/inspeção",
+              style: TextStyle(fontWeight: FontWeight.bold),
             ),
           ],
         ),

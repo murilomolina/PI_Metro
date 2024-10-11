@@ -9,7 +9,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: Row(
         children: [
           Image.asset(
-            '../assets/logo/metro_logo.png', 
+            '../assets/logo/metro_logo_branca.png', 
             height: 100, 
           ),
           const SizedBox(width: 8), // Espaçamento entre o logo e o título

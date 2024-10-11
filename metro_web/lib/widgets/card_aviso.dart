@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 Widget cardAviso(String titulo,String equipamentoId, String dataValidade) {
   return Card(
     elevation: 10,
+    surfaceTintColor: Colors.red,
     child: Container(
       width: 150, 
       height: 180,
