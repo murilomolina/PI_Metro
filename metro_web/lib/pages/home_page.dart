@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:metro_web/widgets/card_nav_list.dart';
 import 'package:metro_web/widgets/custom_app_bar.dart';
 import 'package:metro_web/widgets/custom_drawer.dart';
 import 'package:metro_web/widgets/card_list.dart';
@@ -42,14 +43,24 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: const CustomAppBar(),
       drawer: const CustomDrawer(),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          CardList(
-            equipamentos: equipamentos,
-            scrollController: _scrollController,
-          ),
-        ],
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: CardList(
+                equipamentos: equipamentos,
+                scrollController: _scrollController,
+              ),
+            ),
+            const Padding(
+              padding: EdgeInsets.all(10.0),
+              child: CardNavList(),
+            ),
+          ],
+        ),
       ),
     );
   }
