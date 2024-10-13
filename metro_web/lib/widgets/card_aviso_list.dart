@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'card_aviso.dart';
 
-class CardList extends StatelessWidget {
+class CardAvisoList extends StatelessWidget {
   final List<Map<String, String>> equipamentos;
   final ScrollController scrollController;
 
-  const CardList({
+  const CardAvisoList({
     super.key,
     required this.equipamentos,
     required this.scrollController,

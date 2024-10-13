@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:metro_web/widgets/card_nav_list.dart';
 import 'package:metro_web/widgets/custom_app_bar.dart';
 import 'package:metro_web/widgets/custom_drawer.dart';
-import 'package:metro_web/widgets/card_list.dart';
+import 'package:metro_web/widgets/card_aviso_list.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -50,7 +50,7 @@ class _HomePageState extends State<HomePage> {
           children: [
             Padding(
               padding: const EdgeInsets.all(10.0),
-              child: CardList(
+              child: CardAvisoList(
                 equipamentos: equipamentos,
                 scrollController: _scrollController,
               ),
