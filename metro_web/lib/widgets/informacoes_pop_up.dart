@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:metro_web/pages/home_page.dart';
 
-class InformacoesPopUp extends StatelessWidget {
+class InformacoesPopUp extends StatelessWidget { // essa classe está sendo utilizada apenas na card_aviso e card_aviso_list!!!
   final String tipoEquipamento;
   final String equipamentoId;
   final String dataValidade;

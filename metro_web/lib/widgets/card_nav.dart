@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class CardNavigator extends StatelessWidget {
+class CardNav extends StatelessWidget {
   final String titulo;
   final Widget paginaDestino;
 
-  const CardNavigator({super.key, required this.titulo, required this.paginaDestino});
+  const CardNav({super.key, required this.titulo, required this.paginaDestino});
 
   @override
   Widget build(BuildContext context) {
