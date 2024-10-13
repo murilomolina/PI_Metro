@@ -41,7 +41,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(),
+      appBar: const CustomAppBar(titulo: 'Página Inicial',),
       drawer: const CustomDrawer(pagType: 0,), // 0 para página principal
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,

@@ -1,26 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:metro_web/pages/home_page.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const CustomAppBar({super.key});
+  final String titulo;
+  const CustomAppBar({super.key, required this.titulo});
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
       title: Row(
         children: [
-          Image.asset(
-            '../assets/logo/metro_logo_branca.png', 
-            height: 100, 
+          GestureDetector(
+            onTap: () {
+              // Redirecionar para a página principal
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const HomePage()), // Substitua 'HomePage' pela sua página principal
+              );
+            },
+            child: Image.asset(
+              '../assets/logo/metro_logo_branca.png',
+              height: 100,
+            ),
           ),
           const SizedBox(width: 8), // Espaçamento entre o logo e o título
-          const Text('Metrô Web'), // Título da AppBar (a mudar)
+          Text(titulo), // Título da AppBar
         ],
       ),
       actions: [
         IconButton(
-          icon: const Icon(Icons.construction), // só pra "marcar" espaço
+          icon: const Icon(Icons.construction), // Espaço reservado para o ícone de ação
           onPressed: () {
-            
+            // Ação futura
           },
         ),
       ],
