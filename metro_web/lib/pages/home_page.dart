@@ -20,12 +20,12 @@ class _HomePageState extends State<HomePage> {
     {"tipo": "Equipamento D", "id": "67891", "dataValidade": "25/10/2024", "Localizacao" : "Linha verde", "Descricao localidade" : "Embaixo da mesa...."},
     {"tipo": "Equipamento E", "id": "67892", "dataValidade": "30/10/2024", "Localizacao" : "Linha verde", "Descricao localidade" : "Embaixo da mesa...."},
     {"tipo": "Equipamento F", "id": "67893", "dataValidade": "05/11/2024", "Localizacao" : "Linha verde", "Descricao localidade" : "Embaixo da mesa...."},
-    {"tipo": "Equipamento A", "id": "12345", "dataValidade": "10/10/2024", "Localizacao" : "Linha verde", "Descricao localidade" : "Embaixo da mesa...."},
-    {"tipo": "Equipamento B", "id": "54321", "dataValidade": "15/10/2024", "Localizacao" : "Linha verde", "Descricao localidade" : "Embaixo da mesa...."},
-    {"tipo": "Equipamento C", "id": "67890", "dataValidade": "20/10/2024", "Localizacao" : "Linha verde", "Descricao localidade" : "Embaixo da mesa...."},
-    {"tipo": "Equipamento D", "id": "67891", "dataValidade": "25/10/2024", "Localizacao" : "Linha verde", "Descricao localidade" : "Embaixo da mesa...."},
-    {"tipo": "Equipamento E", "id": "67892", "dataValidade": "30/10/2024", "Localizacao" : "Linha verde", "Descricao localidade" : "Embaixo da mesa...."},
-    {"tipo": "Equipamento F", "id": "67893", "dataValidade": "05/11/2024", "Localizacao" : "Linha verde", "Descricao localidade" : "Embaixo da mesa...."},
+    // {"tipo": "Equipamento A", "id": "12345", "dataValidade": "10/10/2024", "Localizacao" : "Linha verde", "Descricao localidade" : "Embaixo da mesa...."},
+    // {"tipo": "Equipamento B", "id": "54321", "dataValidade": "15/10/2024", "Localizacao" : "Linha verde", "Descricao localidade" : "Embaixo da mesa...."},
+    // {"tipo": "Equipamento C", "id": "67890", "dataValidade": "20/10/2024", "Localizacao" : "Linha verde", "Descricao localidade" : "Embaixo da mesa...."},
+    // {"tipo": "Equipamento D", "id": "67891", "dataValidade": "25/10/2024", "Localizacao" : "Linha verde", "Descricao localidade" : "Embaixo da mesa...."},
+    // {"tipo": "Equipamento E", "id": "67892", "dataValidade": "30/10/2024", "Localizacao" : "Linha verde", "Descricao localidade" : "Embaixo da mesa...."},
+    // {"tipo": "Equipamento F", "id": "67893", "dataValidade": "05/11/2024", "Localizacao" : "Linha verde", "Descricao localidade" : "Embaixo da mesa...."},
   ];
 
   // Para a scrollbar dos avisos
