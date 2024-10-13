@@ -1,51 +1,61 @@
 import 'package:flutter/material.dart';
 
-class CardNavigator extends StatelessWidget{
+class CardNavigator extends StatelessWidget {
   final String titulo;
   final Widget paginaDestino;
 
   const CardNavigator({super.key, required this.titulo, required this.paginaDestino});
 
-
   @override
   Widget build(BuildContext context) {
     return Card(
       elevation: 10,
-      surfaceTintColor: Theme.of(context).primaryColor,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(15), // Bordas arredondadas
+      ),
       child: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              const Color.fromARGB(255, 157, 193, 255),
+              Theme.of(context).primaryColor
+            ], // Gradiente de fundo
+            begin: Alignment.bottomCenter,
+            end: Alignment.topCenter,
+          ),
+          borderRadius: BorderRadius.circular(15), // Mantendo as bordas arredondadas
+        ),
         width: 200, 
         height: 220,
-        padding: const EdgeInsets.all(8),
+        padding: const EdgeInsets.all(10),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center, 
+          crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             // Título em destaque
             Text(
               titulo,
               style: const TextStyle(
-                fontSize: 16, 
-                fontWeight: FontWeight.bold, // destaque no título
+                fontSize: 18, // Aumentando o tamanho da fonte
+                fontWeight: FontWeight.bold,
+                color: Colors.white, // Mudando a cor do texto para branco
               ),
             ),
-            
-            // Texto do equipamento puxado do banco de dados
-            Text(
-              "Ir para a página de $titulo", 
-              style: const TextStyle(fontSize: 14),
-            ),
-            
-            
-            // Botão para verificar
+            // Botão para navegar
             ElevatedButton(
-              onPressed:  () {
-              Navigator.pop(context);
-               Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) =>  paginaDestino), 
-              );
-            },
-              child: const Text('Navegar'),
+              onPressed: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => paginaDestino),
+                );
+              },
+              child: const Text(
+                'Navegar',
+                style: TextStyle(
+                  fontSize: 16, // Aumentando o tamanho da fonte do botão
+                ),
+              ),
             ),
           ],
         ),
@@ -53,4 +63,3 @@ class CardNavigator extends StatelessWidget{
     );
   }
 }
-
