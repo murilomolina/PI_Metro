@@ -34,10 +34,13 @@ class CardList extends StatelessWidget {
               children: equipamentos.map((equipamento) {
                 return Padding(
                   padding: const EdgeInsets.all(20), // espaçamento entre os cards
-                  child: cardAviso(
-                    equipamento['tipo'] ?? 'Sem tipo',
-                    equipamento['id'] ?? 'Sem ID',
-                    equipamento['dataValidade'] ?? 'Sem data',
+                  child: CardAviso(
+                    titulo: equipamento['tipo'] ?? 'Sem tipo',
+                    equipamentoId: equipamento['id'] ?? 'Sem ID',
+                    dataValidade: equipamento['dataValidade'] ?? 'Sem data',
+                    tipoEquipamento: equipamento['tipo'] ?? 'Sem Tipo',
+                    localizacao: equipamento['Localizacao'] ?? 'Sem Localização',
+                    localizacaoDetalhada: equipamento['Descricao localidade'] ?? 'Sem detalhamento',
                   ),
                 );
               }).toList(),
