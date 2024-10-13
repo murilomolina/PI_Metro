@@ -2,14 +2,46 @@ import 'package:flutter/material.dart';
 import 'package:metro_web/pages/home_page.dart';
 
 class CustomDrawer extends StatelessWidget {
-  const CustomDrawer({super.key});
+  final int pagType;
+
+  const CustomDrawer({super.key, required this.pagType});
 
   @override
   Widget build(BuildContext context) {
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
-        children: <Widget>[
+        children: pagType == 0 ? <Widget>[
+          DrawerHeader(
+            decoration: BoxDecoration(
+              color: Theme.of(context).primaryColor, // Cor de fundo do cabeçalho
+            ),
+            child: const Text(
+              'Menu',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 24,
+              ),
+            ),
+          ),
+          ListTile(
+            leading: const Icon(Icons.settings),
+            title: const Text('Configurações'),
+            onTap: () {
+              Navigator.pop(context);
+              // Navegar para a página de configurações
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.logout),
+            title: const Text('Sair'),
+            onTap: () {
+              Navigator.pop(context);
+              // Lógica para logout
+            },
+          )
+        ]:
+        <Widget>[
           DrawerHeader(
             decoration: BoxDecoration(
               color: Theme.of(context).primaryColor, // Cor de fundo do cabeçalho
@@ -48,8 +80,8 @@ class CustomDrawer extends StatelessWidget {
               Navigator.pop(context);
               // Lógica para logout
             },
-          ),
-        ],
+          )
+        ]
       ),
     );
   }

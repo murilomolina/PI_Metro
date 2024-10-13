@@ -14,18 +14,18 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   // Lista exemplo, futuramente será o resultado da consulta do banco de dados
   final List<Map<String, String>> equipamentos = [
-    {"tipo": "Equipamento A", "id": "12345", "dataValidade": "10/10/2024"},
-    {"tipo": "Equipamento B", "id": "54321", "dataValidade": "15/10/2024"},
-    {"tipo": "Equipamento C", "id": "67890", "dataValidade": "20/10/2024"},
-    {"tipo": "Equipamento D", "id": "67891", "dataValidade": "25/10/2024"},
-    {"tipo": "Equipamento E", "id": "67892", "dataValidade": "30/10/2024"},
-    {"tipo": "Equipamento F", "id": "67893", "dataValidade": "05/11/2024"},
-    {"tipo": "Equipamento A", "id": "12345", "dataValidade": "10/10/2024"},
-    {"tipo": "Equipamento B", "id": "54321", "dataValidade": "15/10/2024"},
-    {"tipo": "Equipamento C", "id": "67890", "dataValidade": "20/10/2024"},
-    {"tipo": "Equipamento D", "id": "67891", "dataValidade": "25/10/2024"},
-    {"tipo": "Equipamento E", "id": "67892", "dataValidade": "30/10/2024"},
-    {"tipo": "Equipamento F", "id": "67893", "dataValidade": "05/11/2024"},
+    {"tipo": "Equipamento A", "id": "12345", "dataValidade": "10/10/2024", "Localizacao" : "Linha verde", "Descricao localidade" : "Embaixo da mesa...."},
+    {"tipo": "Equipamento B", "id": "54321", "dataValidade": "15/10/2024", "Localizacao" : "Linha verde", "Descricao localidade" : "Embaixo da mesa...."},
+    {"tipo": "Equipamento C", "id": "67890", "dataValidade": "20/10/2024", "Localizacao" : "Linha verde", "Descricao localidade" : "Embaixo da mesa...."},
+    {"tipo": "Equipamento D", "id": "67891", "dataValidade": "25/10/2024", "Localizacao" : "Linha verde", "Descricao localidade" : "Embaixo da mesa...."},
+    {"tipo": "Equipamento E", "id": "67892", "dataValidade": "30/10/2024", "Localizacao" : "Linha verde", "Descricao localidade" : "Embaixo da mesa...."},
+    {"tipo": "Equipamento F", "id": "67893", "dataValidade": "05/11/2024", "Localizacao" : "Linha verde", "Descricao localidade" : "Embaixo da mesa...."},
+    {"tipo": "Equipamento A", "id": "12345", "dataValidade": "10/10/2024", "Localizacao" : "Linha verde", "Descricao localidade" : "Embaixo da mesa...."},
+    {"tipo": "Equipamento B", "id": "54321", "dataValidade": "15/10/2024", "Localizacao" : "Linha verde", "Descricao localidade" : "Embaixo da mesa...."},
+    {"tipo": "Equipamento C", "id": "67890", "dataValidade": "20/10/2024", "Localizacao" : "Linha verde", "Descricao localidade" : "Embaixo da mesa...."},
+    {"tipo": "Equipamento D", "id": "67891", "dataValidade": "25/10/2024", "Localizacao" : "Linha verde", "Descricao localidade" : "Embaixo da mesa...."},
+    {"tipo": "Equipamento E", "id": "67892", "dataValidade": "30/10/2024", "Localizacao" : "Linha verde", "Descricao localidade" : "Embaixo da mesa...."},
+    {"tipo": "Equipamento F", "id": "67893", "dataValidade": "05/11/2024", "Localizacao" : "Linha verde", "Descricao localidade" : "Embaixo da mesa...."},
   ];
 
   // Para a scrollbar dos avisos
@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBar(),
-      drawer: const CustomDrawer(),
+      drawer: const CustomDrawer(pagType: 0,), // 0 para página principal
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Column(
