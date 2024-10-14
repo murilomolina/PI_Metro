@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:metro_web/database/mongo_users_connection.dart';
 import 'package:metro_web/widgets/card_usuario.dart';
 import 'package:metro_web/widgets/custom_app_bar.dart';
 import 'package:metro_web/widgets/custom_drawer.dart';
@@ -66,6 +67,7 @@ class ControleUsuarios extends StatelessWidget {
     final TextEditingController senhaController = TextEditingController();
     final TextEditingController ocupacaoController = TextEditingController();
     final TextEditingController funcaoController = TextEditingController();
+    var mongoUsersConnection = MongoUsersConnection();
 
     showDialog(
       context: context,
@@ -98,9 +100,19 @@ class ControleUsuarios extends StatelessWidget {
           ),
           actions: [
             TextButton(
-              onPressed: () {
+              onPressed: () async {
                 // implementar a lógica de adicionar o usuário (futuramente)
                 print("Usuário: ${usuarioController.text}, Senha: ${senhaController.text}, Ocupação: ${ocupacaoController.text}, Função: ${funcaoController.text}");
+                
+                await mongoUsersConnection.connect();
+
+                // Adicionar um documento ao banco de dados
+                await mongoUsersConnection.addDocument(usuarioController.text, senhaController.text, ocupacaoController.text , funcaoController.text);
+
+                await mongoUsersConnection.close();
+                
+                
+                // ignore: use_build_context_synchronously
                 Navigator.of(context).pop();
               },
               child: const Text('Adicionar'),
