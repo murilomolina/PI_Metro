@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:metro_web/widgets/informacoes_pop_up.dart';
 
 class CardAviso extends StatelessWidget {
