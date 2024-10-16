@@ -20,7 +20,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               );
             },
             child: Image.asset(
-              '../assets/logo/metro_logo_branca.png',
+              'assets/logo/metro_logo_branca.png',
               height: 100,
             ),
           ),
