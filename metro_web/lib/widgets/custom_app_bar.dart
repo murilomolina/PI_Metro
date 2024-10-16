@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:metro_web/pages/home_page.dart';
+import 'package:metro_web/pages/mapa_rede.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String titulo;
@@ -29,9 +30,14 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       actions: [
         IconButton(
-          icon: const Icon(Icons.construction), // Espaço reservado para o ícone de ação
+          icon: const Icon(Icons.map), // Espaço reservado para o ícone de ação
+          tooltip: 'Mapa da rede',
           onPressed: () {
-            // Ação futura
+            Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const MapaRede()),
+                );
           },
         ),
       ],
