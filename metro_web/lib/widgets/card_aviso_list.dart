@@ -36,11 +36,19 @@ class CardAvisoList extends StatelessWidget {
                   padding: const EdgeInsets.all(20), // espaçamento entre os cards
                   child: CardAviso(
                     titulo: equipamento['tipo'] ?? 'Sem tipo',
+                    patrimonio: equipamento['patrimonio'] ?? 'Sem Patrimônio',
+                    capacidade: equipamento['capacidade'] ?? 'Sem capacidade definida',
+                    codigo_fabricante: equipamento['codigo_fabricante'] ?? 'Sem código fabricante',
+                    data_fabricacao: equipamento['data_fabricacao'] ?? 'Sem data de fabricação',
+                    dataValidade: equipamento['data_validade'] ?? 'Sem data de validade',
+                    ultima_recarga: equipamento['ultima_recarga'] ?? 'Sem data de ultima recarga',
+                    proxima_inspecao: equipamento['proxima_inspecao'] ?? 'Sem data para a próxima inspeção',
+                    status: equipamento['status'] ?? 'Sem status definido',
+                    id_localizacao: equipamento['id_localizacao'] ?? 'Sem id de localizaçãp',
                     equipamentoId: equipamento['id'] ?? 'Sem ID',
-                    dataValidade: equipamento['dataValidade'] ?? 'Sem data',
                     tipoEquipamento: equipamento['tipo'] ?? 'Sem Tipo',
-                    localizacao: equipamento['Localizacao'] ?? 'Sem Localização',
-                    localizacaoDetalhada: equipamento['Descricao localidade'] ?? 'Sem detalhamento',
+                    localizacao: equipamento['localizacao'] ?? 'Sem Localização', // fruto de uma query da tabela localizacoes!
+                    observacoes: equipamento['observacoes'] ?? 'Sem detalhamento',
                   ),
                 );
               }).toList(),

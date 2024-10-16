@@ -6,7 +6,16 @@ class InformacoesPopUp extends StatelessWidget { // essa classe está sendo util
   final String equipamentoId;
   final String dataValidade;
   final String localizacao;
-  final String localizacaoDetalhada;
+  final String observacoes;
+  final String patrimonio;
+  final String capacidade;
+  final String codigo_fabricante;
+  final String data_fabricacao;
+  final String ultima_recarga;
+  final String proxima_inspecao;
+  final String status;
+  final String id_localizacao;
+
 
   const InformacoesPopUp({
     super.key,
@@ -14,7 +23,7 @@ class InformacoesPopUp extends StatelessWidget { // essa classe está sendo util
     required this.equipamentoId,
     required this.dataValidade,
     required this.localizacao,
-    required this.localizacaoDetalhada,
+    required this.observacoes, required this.patrimonio, required this.capacidade, required this.codigo_fabricante, required this.data_fabricacao, required this.ultima_recarga, required this.proxima_inspecao, required this.status, required this.id_localizacao,
   });
 
   @override
@@ -50,7 +59,14 @@ class InformacoesPopUp extends StatelessWidget { // essa classe está sendo util
               _buildInfoRow('ID', equipamentoId),
               _buildInfoRow('Data de Validade', dataValidade),
               _buildInfoRow('Localização atual', localizacao),
-              _buildInfoRow('Localização detalhada', localizacaoDetalhada),
+              _buildInfoRow('Observações', observacoes),
+              _buildInfoRow('Patrimonio', patrimonio),
+              _buildInfoRow('Código fabricante', codigo_fabricante),
+              _buildInfoRow('Data de fabricação', data_fabricacao),
+              _buildInfoRow('Última recarga', ultima_recarga),
+              _buildInfoRow('Próxima Inspeção', proxima_inspecao),  
+              _buildInfoRow('Status',  status),
+              _buildInfoRow('Id de localização', id_localizacao),              
             ],
           ),
         ),

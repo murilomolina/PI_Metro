@@ -7,7 +7,16 @@ class CardAviso extends StatelessWidget {
   final String dataValidade;
   final String tipoEquipamento;
   final String localizacao;
-  final String localizacaoDetalhada;
+  final String observacoes;
+  final String patrimonio;
+  final String capacidade;
+  final String codigo_fabricante;
+  final String data_fabricacao;
+  final String ultima_recarga;
+  final String proxima_inspecao;
+  final String status;
+  final String id_localizacao;
+
 
   const CardAviso({
     super.key,
@@ -16,7 +25,7 @@ class CardAviso extends StatelessWidget {
     required this.dataValidade,
     required this.tipoEquipamento,
     required this.localizacao,
-    required this.localizacaoDetalhada,
+    required this.observacoes, required this.patrimonio, required this.capacidade, required this.codigo_fabricante, required this.data_fabricacao, required this.ultima_recarga, required this.proxima_inspecao, required this.status, required this.id_localizacao,
   });
 
   @override
@@ -30,8 +39,8 @@ class CardAviso extends StatelessWidget {
         decoration: BoxDecoration(
           gradient: const LinearGradient(
             colors: [
-              Color.fromARGB(255, 255, 255, 255),
               Color.fromARGB(255, 228, 228, 228),
+              Color.fromARGB(255, 255, 255, 255),
             ], 
             begin: Alignment.bottomCenter,
             end: Alignment.topCenter,
@@ -87,7 +96,16 @@ class CardAviso extends StatelessWidget {
                       equipamentoId: equipamentoId,
                       dataValidade: dataValidade,
                       localizacao: localizacao,
-                      localizacaoDetalhada: localizacaoDetalhada,
+                      observacoes: observacoes, 
+                      patrimonio: patrimonio, 
+                      capacidade: capacidade, 
+                      codigo_fabricante: codigo_fabricante, 
+                      data_fabricacao: data_fabricacao, 
+                      ultima_recarga: ultima_recarga, 
+                      proxima_inspecao: proxima_inspecao, 
+                      status: status, 
+                      id_localizacao: id_localizacao,
+                      
                     );
                   },
                 );
