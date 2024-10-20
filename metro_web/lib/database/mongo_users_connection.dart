@@ -1,12 +1,15 @@
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:mongo_dart/mongo_dart.dart';
 
 class MongoUsersConnection {
-  late Db db;
-
-  // Inicializa a URI do MongoDB
-  MongoUsersConnection() {
-    db = Db('mongodb://localhost:27017/metro');  // nome do banco de dados "metro"
-  }
+  // para construir essa conexã com o mongo tem que verificar o Connection info do cluster!!!!
+  var db = Db('mongodb://${dotenv.env['MONGO_USER']}:${dotenv.env['MONGO_PASSWORD']}@'
+        '${dotenv.env['HOST_1']},'
+        '${dotenv.env['HOST_2']},'
+        '${dotenv.env['HOST_3']}/'
+        '${dotenv.env['MONGO_DB_NAME']}?authSource=admin&compressors=disabled'
+        '&gssapiServiceName=mongodb&replicaSet=${dotenv.env['CLUSTER']}'
+        '&ssl=true');
 
   // Método para conectar ao banco de dados
   Future<void> connect() async {
@@ -18,22 +21,27 @@ class MongoUsersConnection {
     }
   }
 
-  // Método para adicionar um documento ao banco de dados
-  Future<void> addDocument(String userName, String senha, String ocupacao, String funcao) async {
+  // Método para adicionar um usuario ao banco de dados
+  Future<void> addUsuario(String userName, String senha, String ocupacao, String funcao) async {
     var collection = db.collection('users'); // Nome da coleção
 
-    var document = {
-      'userName': userName,
+    var usuario = {
+      'user': userName,
       'senha': senha,
       'ocupacao': ocupacao,
       'funcao': funcao,
     };
 
     try {
-      await collection.insertOne(document); // Adiciona o documento à coleção
-      print('Documento adicionado com sucesso: $document');
+      await collection.insertOne({
+      'user': userName,
+      'senha': senha,
+      'ocupacao': ocupacao,
+      'funcao': funcao,
+      }); // Adiciona o documento à coleção
+      print('Usuario adicionado com sucesso: $usuario');
     } catch (e) {
-      print('Erro ao adicionar documento: $e');
+      print('Erro ao adicionar Usuario: $e');
     }
   }
 
@@ -54,11 +62,12 @@ class MongoUsersConnection {
   }
 
   // Método para editar um usuário pelo nome
-  Future<void> editUser(String userName, String senha, String ocupacao, String funcao) async {
-    var collection = db.collection('users'); // Nome da coleção
+  Future<void> editUser(String oldUserName, String newUserName, String senha, String ocupacao, String funcao) async {
+    var collection = db.collection('users'); 
 
     // Cria um mapa com os novos dados para atualizar
     var updatedData = {
+      'user': newUserName,
       'senha': senha,
       'ocupacao': ocupacao,
       'funcao': funcao,
@@ -66,17 +75,35 @@ class MongoUsersConnection {
 
     try {
       var result = await collection.updateOne(
-        {'userName': userName}, 
+        {'user': oldUserName}, // Altere isso para o campo correto
         {'\$set': updatedData}
       ); // Atualiza o documento com os novos dados
 
       if (result.isAcknowledged) {
-        print('Usuário $userName editado com sucesso.');
+        print('Usuário $oldUserName editado com sucesso.');
       } else {
-        print('Usuário $userName não encontrado ou não foi alterado.');
+        print('Usuário $oldUserName não encontrado ou não foi alterado.');
       }
     } catch (e) {
       print('Erro ao editar usuário: $e');
+    }
+  }
+
+  // Método existente para buscar todos os usuários sem a senha
+  getAllUsers() async {
+    var collection = db.collection('users'); // Nome da coleção
+    List<Map<String, dynamic>> usersList = [];
+
+    try {
+      // Aqui você faz a busca e exclui o campo 'senha' usando projeção
+      await collection.find().forEach((user) {
+        usersList.add(user);
+      }); // O segundo argumento é o filtro de projeção
+
+      return usersList;
+    } catch (e) {
+      print('Erro ao buscar usuários: $e');
+      return usersList;
     }
   }
 
