@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:metro_mobile/pages/login_page.dart';
+import 'package:metro_mobile/pages/home_page.dart';
+// import 'package:metro_mobile/pages/login_page.dart';
 
 
 class App extends StatelessWidget {
@@ -35,7 +36,7 @@ class App extends StatelessWidget {
         // Definir a fonte padrão aqui
         fontFamily: 'Roboto', // próxima a padrão do metro (helvetica)
       ),
-      home: const LoginPage(),
+      home: const HomePage(),
       debugShowCheckedModeBanner: false,
     );
   }

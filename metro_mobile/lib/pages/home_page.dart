@@ -1,28 +1,67 @@
 import 'package:flutter/material.dart';
+import 'package:metro_mobile/widgets/card_aviso_list.dart';
+import 'package:metro_mobile/widgets/card_nav_list.dart';
 import 'package:metro_mobile/widgets/custom_appbar.dart';
 import 'package:metro_mobile/widgets/custom_drawer.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  final ScrollController _scrollController = ScrollController();
+
+  final List<Map<String, String>> equipamentos = [
+    {"tipo": "Equipamento A", 'patrimonio':'Patrimonio1', 'capacidade': '1 Litro', "id": "12345", "data_validade": "10/10/2024", "localizacao" : "Linha verde", "observacoes" : "Embaixo da mesa...Manutenção preventiva de equipamentos, gerenciamento e controle de equipamentos utilizando QR Code, alerta de vencimento e data de inspeção dos equipamentos, relatórios sobre equipamentos e suas datas de inspeção/manutenção e histórico de intervenções, gerar e imprimir QR Codes.", 'codigo_fabricante': '123456', 'data_fabricacao': '10/05/2022' , 'ultima_recarga': '10/05/2024', 'proxima_inspecao': '25/12/2024', 'status':'Inspeção em dia', 'id_localizacao': '123456789'},
+    {"tipo": "Equipamento B", 'patrimonio':'Patrimonio2', 'capacidade': '1 Litro', "id": "54321", "data_validade": "15/10/2024", "localizacao" : "Linha verde", "observacoes" : "Embaixo da mesa....", 'codigo_fabricante': '123456', 'data_fabricacao': '10/05/2022' , 'ultima_recarga': '10/05/2024', 'proxima_inspecao': '25/12/2024', 'status':'Inspeção em dia', 'id_localizacao': '123456789'},
+    {"tipo": "Equipamento C", 'patrimonio':'Patrimonio3', 'capacidade': '1 Litro', "id": "67890", "data_validade": "20/10/2024", "localizacao" : "Linha verde", "observacoes" : "Embaixo da mesa....", 'codigo_fabricante': '123456', 'data_fabricacao': '10/05/2022' , 'ultima_recarga': '10/05/2024', 'proxima_inspecao': '25/12/2024', 'status':'Inspeção em dia', 'id_localizacao': '123456789'},
+    {"tipo": "Equipamento D", 'patrimonio':'Patrimonio4', 'capacidade': '1 Litro', "id": "67891", "data_validade": "25/10/2024", "localizacao" : "Linha verde", "observacoes" : "Embaixo da mesa....", 'codigo_fabricante': '123456', 'data_fabricacao': '10/05/2022' , 'ultima_recarga': '10/05/2024', 'proxima_inspecao': '25/12/2024', 'status':'Inspeção em dia', 'id_localizacao': '123456789'},
+    {"tipo": "Equipamento E", 'patrimonio':'Patrimonio5', 'capacidade': '1 Litro', "id": "67892", "data_validade": "30/10/2024", "localizacao" : "Linha verde", "observacoes" : "Embaixo da mesa....", 'codigo_fabricante': '123456', 'data_fabricacao': '10/05/2022' , 'ultima_recarga': '10/05/2024', 'proxima_inspecao': '25/12/2024', 'status':'Inspeção em dia', 'id_localizacao': '123456789'},
+    {"tipo": "Equipamento F", 'patrimonio':'Patrimonio6', 'capacidade': '1 Litro', "id": "67893", "data_validade": "05/11/2024", "localizacao" : "Linha verde", "observacoes" : "Embaixo da mesa....", 'codigo_fabricante': '123456', 'data_fabricacao': '10/05/2022' , 'ultima_recarga': '10/05/2024', 'proxima_inspecao': '25/12/2024', 'status':'Inspeção em dia', 'id_localizacao': '123456789'},
+    // {"tipo": "Equipamento A", 'patrimonio':'Patrimonio7', 'capacidade': '1 Litro', "id": "12345", "data_validade": "10/10/2024", "localizacao" : "Linha verde", "observacoes" : "Embaixo da mesa....", 'codigo_fabricante': '123456', 'data_fabricacao': '10/05/2022' , 'ultima_recarga': '10/05/2024', 'proxima_inspecao': '25/12/2024', 'status':'Inspeção em dia', 'id_localizacao': '123456789'},
+    // {"tipo": "Equipamento B", 'patrimonio':'Patrimonio8', 'capacidade': '1 Litro', "id": "54321", "data_validade": "15/10/2024", "localizacao" : "Linha verde", "observacoes" : "Embaixo da mesa....", 'codigo_fabricante': '123456', 'data_fabricacao': '10/05/2022' , 'ultima_recarga': '10/05/2024', 'proxima_inspecao': '25/12/2024', 'status':'Inspeção em dia', 'id_localizacao': '123456789'},
+    // {"tipo": "Equipamento C", 'patrimonio':'Patrimonio9', 'capacidade': '1 Litro', "id": "67890", "data_validade": "20/10/2024", "localizacao" : "Linha verde", "observacoes" : "Embaixo da mesa....", 'codigo_fabricante': '123456', 'data_fabricacao': '10/05/2022' , 'ultima_recarga': '10/05/2024', 'proxima_inspecao': '25/12/2024', 'status':'Inspeção em dia', 'id_localizacao': '123456789'},
+    // {"tipo": "Equipamento D", 'patrimonio':'Patrimonio10', 'capacidade': '1 Litro', "id": "67891", "data_validade": "25/10/2024", "localizacao" : "Linha verde", "observacoes" : "Embaixo da mesa....", 'codigo_fabricante': '123456', 'data_fabricacao': '10/05/2022' , 'ultima_recarga': '10/05/2024', 'proxima_inspecao': '25/12/2024', 'status':'Inspeção em dia', 'id_localizacao': '123456789'},
+    // {"tipo": "Equipamento E", 'patrimonio':'Patrimonio11', 'capacidade': '1 Litro', "id": "67892", "data_validade": "30/10/2024", "localizacao" : "Linha verde", "observacoes" : "Embaixo da mesa....", 'codigo_fabricante': '123456', 'data_fabricacao': '10/05/2022' , 'ultima_recarga': '10/05/2024', 'proxima_inspecao': '25/12/2024', 'status':'Inspeção em dia', 'id_localizacao': '123456789'},
+    // {"tipo": "Equipamento F", 'patrimonio':'Patrimonio12', 'capacidade': '1 Litro', "id": "67893", "data_validade": "05/11/2024", "localizacao" : "Linha verde", "observacoes" : "Embaixo da mesa....", 'codigo_fabricante': '123456', 'data_fabricacao': '10/05/2022' , 'ultima_recarga': '10/05/2024', 'proxima_inspecao': '25/12/2024', 'status':'Inspeção em dia', 'id_localizacao': '123456789'},
+  ];
+
+  @override
+  void dispose() {
+    // Dispose o ScrollController quando a página for descartada
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar: CustomAppBar(titulo: 'Página principal'),
-      drawer: CustomDrawer(pagType: 0),
-      body: Center(child: Column(
-        children: [
-          Text('Em desenvolvimento'),
-          // ElevatedButton(onPressed: () {
-          //   Navigator.pop(context);
-          //       Navigator.push(
-          //         context,
-          //         MaterialPageRoute(builder: (context) => const LoginPage()),
-          //       );
-          // }, child: const Text('Exemplo de página de login'),
-          // )
-        ],
-      ),),
+    return Scaffold(
+      appBar: const CustomAppBar(titulo: 'Página principal'),
+      drawer: const CustomDrawer(pagType: 0),
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: CardAvisoList(
+                equipamentos: equipamentos,
+                scrollController: _scrollController,
+              ),
+            ),
+            const CardNavList(),
+          ],
+        ),
+          ),
+        ),
+      ),
     );
   }
 }
