@@ -79,13 +79,22 @@ class _ScannerQrcodeState extends State<ScannerQrcode> {
         return _chaveValor(jsonData);
       } catch (e) {
         // Se for texto comum, exibir como texto simples
-        print("Texto comum\n"+code);
-        return Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Text(
-            code,
-            textAlign: TextAlign.justify,
-            style: const TextStyle(fontSize: 16),
+        print('Texto comum\n' + code  + "\n'Suposto' erro: " + e.toString());
+        return SingleChildScrollView(
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Text(
+                  code,
+                  textAlign: TextAlign.justify,
+                  style: const TextStyle(fontSize: 16),
+                ),
+              ),
+              ElevatedButton(onPressed: () {
+                _copiaParaAreaTransf(code, context);
+              }, child: const Text('Copiar para area de transferencia'))
+            ],
           ),
         );
       }
@@ -112,6 +121,9 @@ class _ScannerQrcodeState extends State<ScannerQrcode> {
                   textAlign: TextAlign.right,
                 ),
               ),
+              ElevatedButton(onPressed: () {
+                _copiaParaAreaTransf(data, context);
+              }, child: const Text('Copiar para area de transferencia'))
             ],
           );
         }).toList(),
@@ -199,4 +211,75 @@ class _ScannerQrcodeState extends State<ScannerQrcode> {
       },
     );
   }
+
+  Future<void> _copiaParaAreaTransf(dynamic data, BuildContext context)async {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+            shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15), 
+          ),
+            title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  Icon(Icons.info, color: Theme.of(context).primaryColor),
+                  const Text(' Copiar info'),
+                ],
+              ),
+              IconButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color.fromARGB(255, 153, 153, 153),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop(); // Fechar o pop-up
+              },
+              icon: const Icon(Icons.close, size: 18),
+            ),
+            ],
+          ),
+          content: SingleChildScrollView(
+            child: IntrinsicHeight(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text("Deseja copiar as informações do QR Code para a area de transferencia?\n"),
+                  const SizedBox(height: 10),
+                  Text(data),
+                ],
+              ),
+            ),
+          ),
+          actions: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                ElevatedButton.icon(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Theme.of(context).primaryColor,
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                  ),
+                  onPressed: () {
+                      Clipboard.setData(ClipboardData(
+                          text: data)); // Copiar URL para área de transferência
+                      Navigator.of(context).pop(); // Fechar o diálogo
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                            content: Text("Informações copiada para a área de transferência!")),
+                      );
+                    },
+                  icon: const Icon(Icons.copy, size: 18),
+                  label: const Text('Copiar informações'),
+                ),
+              ],
+            ),
+          ],
+        );
+      },
+    );
+  }
+
 }
