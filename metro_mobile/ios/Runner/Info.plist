@@ -5,6 +5,11 @@
 	<key>NSCameraUsageDescription</key>
 	<string>App requires camera access to scan QR codes</string>
 	<key>CFBundleDevelopmentRegion</key>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>http</string>
+		<string>https</string>
+	</array>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
 	<string>Metro Mobile</string>

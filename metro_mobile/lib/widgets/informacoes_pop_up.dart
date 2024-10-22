@@ -45,7 +45,7 @@ class InformacoesPopUp extends StatelessWidget { // essa classe está sendo util
           ),
           IconButton(
           style: ElevatedButton.styleFrom(
-            backgroundColor: Color.fromARGB(255, 153, 153, 153),
+            backgroundColor: const Color.fromARGB(255, 153, 153, 153),
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
           ),
           onPressed: () {
