@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:metro_mobile/pages/home_page.dart';
+import 'package:metro_mobile/pages/perfil_logado.dart';
 
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -33,11 +34,11 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           icon: const Icon(Icons.supervised_user_circle), // Espaço reservado para o ícone de ação
           tooltip: 'Meu usuario',
           onPressed: () {
-            // Navigator.pop(context);
-                // Navigator.push(
-                  // context,
-                  // MaterialPageRoute(builder: (context) => const MapaRede()),
-                // );
+            Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const PerfilLogado()),
+                );
           },
         ),
       ],

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:metro_mobile/pages/login_page.dart';
+import 'package:metro_mobile/pages/perfil_logado.dart';
 import 'package:metro_mobile/pages/scanner_qrcode.dart';
 
 import 'package:metro_mobile/widgets/card_nav.dart';
@@ -27,7 +27,7 @@ class CardNavList extends StatelessWidget {
                 runSpacing: 40.0, 
                 children: [
                   CardNav(titulo: 'Scanner de QR code', paginaDestino: ScannerQrcode(),),
-                  CardNav(titulo: 'Meu perfil', paginaDestino: LoginPage(),),
+                  CardNav(titulo: 'Meu perfil', paginaDestino: PerfilLogado(),),
                   
 
                 ],
