@@ -22,34 +22,70 @@ class _ScannerQrcodeState extends State<ScannerQrcode> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(titulo: 'Página principal'),
-      drawer: const CustomDrawer(pagType: 0),
-      body: Center(
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ElevatedButton(
-                onPressed: () {
-                  _qrBarCodeScannerDialogPlugin.getScannedQrBarCode(
-                    context: context,
-                    onCode: (code) {
-                      setState(() {
-                        this.code = code;
-                      });
-                    },
-                  );
-                },
-                child: const Text("Clique para escanear"),
+  appBar: const CustomAppBar(titulo: 'Página Scanner'),
+  drawer: const CustomDrawer(pagType: 1),
+  body: Center(
+    child: SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(
+              "Bem-vindo ao Scanner de QR Code",
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                color: Theme.of(context).primaryColor,
               ),
-              const SizedBox(height: 20),
-              // Exibe o conteúdo de forma organizada
-              if (code != null) _handleQRCode(code!),
-            ],
-          ),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton.icon(
+              icon: const Icon(Icons.qr_code_scanner, size: 24),
+              label: const Text(
+                "Clique para abrir o scanner",
+                style: TextStyle(fontSize: 18),
+              ),
+              style: ElevatedButton.styleFrom(
+                padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 25),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                elevation: 5,
+              ),
+              onPressed: () {
+                _qrBarCodeScannerDialogPlugin.getScannedQrBarCode(
+                  context: context,
+                  onCode: (code) {
+                    setState(() {
+                      this.code = code;
+                    });
+                  },
+                );
+              },
+            ),
+            const SizedBox(height: 30),
+            if (code != null)
+              _handleQRCode(code!),
+            if (code == null)
+              const Column(
+                children: [
+                  Icon(Icons.qr_code_2, size: 100, color: Colors.grey),
+                  SizedBox(height: 10),
+                  Text(
+                    "Nenhum QR Code escaneado.",
+                    style: TextStyle(fontSize: 16, color: Colors.grey),
+                  ),
+                ],
+              ),
+          ],
         ),
       ),
-    );
+    ),
+  ),
+);
   }
 
    // Função para tratar e exibir os dados do QR Code
