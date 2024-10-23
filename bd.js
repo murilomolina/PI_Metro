@@ -18,6 +18,7 @@ async function createDatabase() {
         const novoUsuario = {
             id: 1,
             usuario: 'jose_silva',
+            email: 'jose.silva@gmail.com'
             senha: 'senhaSegura123',
             funcao: 'Operador',
             ocupacao: 'Manutenção'
