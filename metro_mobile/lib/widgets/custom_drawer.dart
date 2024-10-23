@@ -16,11 +16,10 @@ class CustomDrawer extends StatelessWidget {
             decoration: BoxDecoration(
               color: Theme.of(context).primaryColor, // Cor de fundo do cabeçalho
             ),
-            child: const Text(
-              'Menu',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 24,
+            child: Align(
+              alignment: Alignment.topLeft, 
+              child: Image.asset(
+                'assets/logo/metro_logo_branca.png',
               ),
             ),
           ),
@@ -48,11 +47,10 @@ class CustomDrawer extends StatelessWidget {
             decoration: BoxDecoration(
               color: Theme.of(context).primaryColor, // Cor de fundo do cabeçalho
             ),
-            child: const Text(
-              'Menu',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 24,
+            child: Align(
+              alignment: Alignment.topLeft, 
+              child: Image.asset(
+                'assets/logo/metro_logo_branca.png',
               ),
             ),
           ),
