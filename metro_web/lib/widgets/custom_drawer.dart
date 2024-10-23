@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:metro_web/pages/home_page.dart';
+import 'package:metro_web/pages/perfil_logado.dart';
 
 class CustomDrawer extends StatelessWidget {
   final int pagType;
@@ -23,6 +24,17 @@ class CustomDrawer extends StatelessWidget {
                 fontSize: 24,
               ),
             ),
+          ),
+          ListTile(
+            leading: const Icon(Icons.person),
+            title: const Text('Meu Perfil'),
+            onTap: () {
+              Navigator.pop(context);
+               Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const PerfilLogado()), 
+              );
+            },
           ),
           ListTile(
             leading: const Icon(Icons.settings),
@@ -62,6 +74,17 @@ class CustomDrawer extends StatelessWidget {
                Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => const HomePage()), 
+              );
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.person),
+            title: const Text('Meu Perfil'),
+            onTap: () {
+              Navigator.pop(context);
+               Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const PerfilLogado()), 
               );
             },
           ),
