@@ -5,6 +5,7 @@ import 'dart:io';
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter/services.dart';
 import 'package:metro_web/widgets/custom_app_bar.dart';
 import 'package:metro_web/widgets/custom_drawer.dart';
 import 'package:qr_flutter/qr_flutter.dart'; 
@@ -194,11 +195,23 @@ class _QRcodeGeneratorState extends State<QRcodeGenerator> {
                 ],
                 
                 // Botão para gerar QR Code
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {}); // Atualizar a interface para gerar o QR Code
-                  },
-                  child: const Text('Gerar QR Code'),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {
+                        setState(() {}); // Atualizar a interface para gerar o QR Code
+                      },
+                      child: const Text('Gerar QR Code'),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        _limparCampos(); // Atualizar a interface para gerar o QR Code
+                      },
+                      style: ButtonStyle(backgroundColor: MaterialStateColor.resolveWith((states) => Colors.red)),
+                      child: const Text('Limpar Campos'),
+                    ),
+                  ],
                 ),
                 const SizedBox(height: 20),
                 
@@ -283,12 +296,14 @@ class _QRcodeGeneratorState extends State<QRcodeGenerator> {
         );
       } catch (e) {
         // Exibir um snackbar em caso de erro
+        print(e);
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Erro ao salvar o QR Code: $e')),
         );
       }
     } else {
       // Exibir um snackbar se a permissão não for concedida
+      print('Erro permissão negada');
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Permissão de armazenamento negada')),
       );
@@ -320,4 +335,21 @@ class _QRcodeGeneratorState extends State<QRcodeGenerator> {
       },
     );
   }
+
+  void _limparCampos() {
+  tipoEquipamentoController.clear();
+  equipamentoIdController.clear();
+  dataValidadeController.clear();
+  localizacaoController.clear();
+  observacoesController.clear();
+  patrimonioController.clear();
+  capacidadeController.clear();
+  codigo_fabricanteController.clear();
+  data_fabricacaoController.clear();
+  ultima_recargaController.clear();
+  proxima_inspecaoController.clear();
+  statusController.clear();
+  id_localizacaoController.clear();
+}
+
 }
