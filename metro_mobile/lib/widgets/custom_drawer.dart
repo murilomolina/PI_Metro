@@ -36,8 +36,10 @@ class CustomDrawer extends StatelessWidget {
             leading: const Icon(Icons.logout),
             title: const Text('Sair'),
             onTap: () {
-              Navigator.pop(context);
-              // Lógica para logout
+              // Limpar tokens de autenticação (se a gente usar algum)
+              // remover dados salvos em cache ou sessões
+              // Limpar cache de token
+              Navigator.of(context).pushReplacementNamed('/login'); // Redirecionar para a página de login
             },
           )
         ]:
@@ -77,8 +79,10 @@ class CustomDrawer extends StatelessWidget {
             leading: const Icon(Icons.logout),
             title: const Text('Sair'),
             onTap: () {
-              Navigator.pop(context);
-              // Lógica para logout
+              // Limpar tokens de autenticação (se a gente usar algum)
+              // remover dados salvos em cache ou sessões
+              // Limpar cache de token
+              Navigator.of(context).pushReplacementNamed('/login'); // Redirecionar para a página de login
             },
           )
         ]

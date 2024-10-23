@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:metro_mobile/pages/home_page.dart';
-// import 'package:metro_mobile/pages/login_page.dart';
+import 'package:metro_mobile/pages/login_page.dart';
+import 'package:metro_mobile/pages/perfil_logado.dart';
+import 'package:metro_mobile/pages/scanner_qrcode.dart';
 
 
 class App extends StatelessWidget {
@@ -9,6 +10,12 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      //definição de rotas (no momento a unica utilizada é a de LogingPage() (/login) )
+      routes: {
+        '/login': (context) => const LoginPage(),
+        '/scanner': (context) => const ScannerQrcode(),
+        '/perfil': (context) => const PerfilLogado()
+      },
       title: 'Metrô Web',
       theme: ThemeData(
         primaryColor:  const Color.fromRGBO(0, 20, 137, 1), // Cor principal
@@ -36,7 +43,7 @@ class App extends StatelessWidget {
         // Definir a fonte padrão aqui
         fontFamily: 'Roboto', // próxima a padrão do metro (helvetica)
       ),
-      home: const HomePage(),
+      home: const LoginPage(),
       debugShowCheckedModeBanner: false,
     );
   }

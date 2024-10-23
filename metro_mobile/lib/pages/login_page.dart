@@ -20,9 +20,9 @@ class LoginPage extends StatelessWidget {
       onLogin: (loginData) {
         return AuthService().login(loginData.name, loginData.password);
       },
-      onSignup: (loginData) {
-        return AuthService().signup(loginData.name ?? '', loginData.password ?? '');
-      },
+      // onSignup: (loginData) {
+      //   return AuthService().signup(loginData.name ?? '', loginData.password ?? '');
+      // },
       onSubmitAnimationCompleted: () {
         Navigator.of(context).pushReplacement(MaterialPageRoute(
           builder: (context) => const HomePage(),
@@ -30,14 +30,14 @@ class LoginPage extends StatelessWidget {
       },
       onRecoverPassword: (name) {
         return AuthService().recoverPassword(name);
-      }, // o que fazer para recuperar a senha???
+      }, // Minha ideia de recuperar a senha seria mandar um email para um ADM especifico e responsavel pelos acessos e cadastros dos usuarios
 
       messages: LoginMessages(
         userHint: 'Usuario',
         passwordHint: 'Senha',
         confirmPasswordHint: 'Confirma',
         loginButton: 'LOG IN',
-        signupButton: 'Cadastre-se',
+        // signupButton: 'Cadastre-se',
         forgotPasswordButton: 'Esqueceu sua senha?',
         recoverPasswordButton: 'Ajuda',
         goBackButton: 'Voltar',

@@ -13,15 +13,16 @@ Future<List<UsuarioApp>> consultaUsuariosApp() async {
     return [
       UsuarioApp('usuario1@gmail.com', '123'),
       UsuarioApp('usuario2@gmail.com', '123'),
+      UsuarioApp('murilo@gmail.com', '123')
     ];
   });
 }
 
-Future<void> insereUsuarioApp(String email, String senha) async {
-  // Simula a inserção de um novo usuário no banco de dados
-  await Future.delayed(const Duration(seconds: 1));
-  print('Novo usuário inserido: $email');
-}
+// Future<void> insereUsuarioApp(String email, String senha) async {
+//   // Simula a inserção de um novo usuário no banco de dados
+//   await Future.delayed(const Duration(seconds: 1));
+//   print('Novo usuário inserido: $email');
+// }
 
 // Simula o processo de recuperação de senha
 Future<String?> recoverPassword(String email) async {

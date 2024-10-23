@@ -18,7 +18,8 @@ class _PerfilLogadoState extends State<PerfilLogado> {
     String jsonResponse = '''
     {
       "avatar": "https://avatars.githubusercontent.com/u/122751852?v=4",
-      "username": "Murilo Molina Barone",
+      "user": "Murilo Molina Barone",
+      "email":"murilo@gmail.com",
       "funcao": "ADM",
       "ocupacao": "Desenvolvedor"
     }
@@ -94,7 +95,7 @@ class _PerfilLogadoState extends State<PerfilLogado> {
                         child: Column(
                           children: [
                             Text(
-                              userData!['username'],
+                              userData!['user'],
                               style: const TextStyle(
                                 fontSize: 24,
                                 fontWeight: FontWeight.bold,
@@ -107,6 +108,15 @@ class _PerfilLogadoState extends State<PerfilLogado> {
                               indent: 10,
                               endIndent: 10,
                             ),
+                            // email
+                            Text(
+                              "E-mail: ${userData!['email']}",
+                              style: const TextStyle(
+                                fontSize: 18,
+                                color: Colors.black,
+                              ),
+                            ),
+                            const SizedBox(height: 5),
                             // Função
                             Text(
                               "Função: ${userData!['funcao']}",
