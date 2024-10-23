@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:metro_mobile/pages/comunica_adm.dart';
 import 'package:metro_mobile/pages/perfil_logado.dart';
 import 'package:metro_mobile/pages/scanner_qrcode.dart';
 
@@ -28,7 +29,7 @@ class CardNavList extends StatelessWidget {
                 children: [
                   CardNav(titulo: 'Scanner de QR code', paginaDestino: ScannerQrcode(),),
                   CardNav(titulo: 'Meu perfil', paginaDestino: PerfilLogado(),),
-                  
+                  CardNav(titulo: 'Solicitar relatório/Comunicar ADM', paginaDestino: ComunicaAdm(),)
 
                 ],
               ),
