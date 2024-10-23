@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 
 class Cardusuario extends StatelessWidget {
   final String usuario;
+  final String email;
   final String funcao;
   final String ocupacao;
 
-  const Cardusuario({super.key, required this.usuario, required this.funcao, required this.ocupacao});
+  const Cardusuario({super.key, required this.usuario, required this.funcao, required this.ocupacao, required this.email});
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +40,14 @@ class Cardusuario extends StatelessWidget {
                 fontSize: 24, 
                 fontWeight: FontWeight.bold,
                 color: Colors.white, 
+              ),
+            ),
+            Text(
+              email,
+              style: const TextStyle(
+                fontSize: 24, 
+                fontWeight: FontWeight.bold,
+                color: Colors.black, 
               ),
             ),
             Text(

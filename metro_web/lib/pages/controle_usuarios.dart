@@ -25,13 +25,13 @@ class ControleUsuarios extends StatelessWidget {
                 spacing: 40.0, 
                 runSpacing: 40.0, 
                 children: [
-                  Cardusuario(usuario: 'Usuario1', funcao: 'ADM', ocupacao: 'Gerencia de Tecnologia'),
-                  Cardusuario(usuario: 'Usuario2', funcao: 'ADM', ocupacao: 'Gerencia de Tecnologia'),
-                  Cardusuario(usuario: 'Usuario3', funcao: 'USER', ocupacao: 'Operador'),
-                  Cardusuario(usuario: 'Usuario4', funcao: 'USER', ocupacao: 'Operador'),
-                  Cardusuario(usuario: 'Usuario5', funcao: 'USER', ocupacao: 'Operador'),
-                  Cardusuario(usuario: 'Usuario6', funcao: 'USER', ocupacao: 'Operador'),
-                  Cardusuario(usuario: 'Usuario7', funcao: 'USER', ocupacao: 'Operador'),
+                  Cardusuario(usuario: 'Usuario1', email: 'usuario1@gmail.com', funcao: 'ADM', ocupacao: 'Gerencia de Tecnologia'),
+                  Cardusuario(usuario: 'Usuario2', email: 'usuario2@gmail.com', funcao: 'ADM', ocupacao: 'Gerencia de Tecnologia'),
+                  Cardusuario(usuario: 'Usuario3', email: 'usuario3@gmail.com', funcao: 'USER', ocupacao: 'Operador'),
+                  Cardusuario(usuario: 'Usuario4', email: 'usuario4@gmail.com', funcao: 'USER', ocupacao: 'Operador'),
+                  Cardusuario(usuario: 'Usuario5', email: 'usuario5@gmail.com', funcao: 'USER', ocupacao: 'Operador'),
+                  Cardusuario(usuario: 'Usuario6', email: 'usuario6@gmail.com', funcao: 'USER', ocupacao: 'Operador'),
+                  Cardusuario(usuario: 'Usuario7', email: 'usuario7@gmail.com', funcao: 'USER', ocupacao: 'Operador'),
                 ],
               ),
             ],
@@ -64,9 +64,11 @@ class ControleUsuarios extends StatelessWidget {
   // Método para mostrar o diálogo de adição de usuário
   void _showAddUserDialog(BuildContext context) {
     final TextEditingController usuarioController = TextEditingController();
+    final TextEditingController emailController = TextEditingController();
     final TextEditingController senhaController = TextEditingController();
     final TextEditingController ocupacaoController = TextEditingController();
     final TextEditingController funcaoController = TextEditingController();
+    
     var mongoUsersConnection = MongoUsersConnection();
 
     showDialog(
@@ -81,6 +83,10 @@ class ControleUsuarios extends StatelessWidget {
                 TextField(
                   controller: usuarioController,
                   decoration: const InputDecoration(labelText: 'Nome de Usuário'),
+                ),
+                TextField(
+                  controller: emailController,
+                  decoration: const InputDecoration(labelText: 'E-mail do Usuário'),
                 ),
                 TextField(
                   controller: senhaController,
@@ -107,7 +113,7 @@ class ControleUsuarios extends StatelessWidget {
                 await mongoUsersConnection.connect();
 
                 // Adicionar um documento ao banco de dados
-                await mongoUsersConnection.addDocument(usuarioController.text, senhaController.text, ocupacaoController.text , funcaoController.text);
+                await mongoUsersConnection.addUsuario(usuarioController.text, emailController.text, senhaController.text, ocupacaoController.text , funcaoController.text);
 
                 await mongoUsersConnection.close();
                 

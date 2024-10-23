@@ -22,11 +22,12 @@ class MongoUsersConnection {
   }
 
   // Método para adicionar um usuario ao banco de dados
-  Future<void> addUsuario(String userName, String senha, String ocupacao, String funcao) async {
+  Future<void> addUsuario(String userName, String email, String senha, String ocupacao, String funcao) async {
     var collection = db.collection('users'); // Nome da coleção
 
     var usuario = {
       'user': userName,
+      'email': email,
       'senha': senha,
       'ocupacao': ocupacao,
       'funcao': funcao,
@@ -35,6 +36,7 @@ class MongoUsersConnection {
     try {
       await collection.insertOne({
       'user': userName,
+      'email': email,     
       'senha': senha,
       'ocupacao': ocupacao,
       'funcao': funcao,
@@ -45,7 +47,7 @@ class MongoUsersConnection {
     }
   }
 
-  // Método para excluir um usuário pelo nome
+  // Método para excluir um usuário pelo nome, porem eu acho que deve mudar para e-mail, pq acredito que nome de usuario nesse app possa repetir
   Future<void> deleteUser(String userName) async {
     var collection = db.collection('users'); // Nome da coleção
 
@@ -61,7 +63,7 @@ class MongoUsersConnection {
     }
   }
 
-  // Método para editar um usuário pelo nome
+  // Método para editar um usuário pelo nome, porem eu acho que deve mudar para e-mail, pq acredito que nome de usuario nesse app possa repetir
   Future<void> editUser(String oldUserName, String newUserName, String senha, String ocupacao, String funcao) async {
     var collection = db.collection('users'); 
 

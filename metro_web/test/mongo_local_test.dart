@@ -10,7 +10,7 @@ void main() async {
   print('====================================================================');
   print('>> Adicionando usuarios');
   var usersCollection = db.collection('users');
-  await usersCollection.insertOne({ 'user':"Murilo Molina", 'senha':"1234", 'ocupacao':"Desenvolvedor", 'funcao': "ADM"});
+  await usersCollection.insertOne({ 'user':"Murilo Molina", 'email': 'murilo@gmail.com', 'senha':"1234", 'ocupacao':"Desenvolvedor", 'funcao': "ADM"});
   
   await usersCollection.find().forEach((v) {
     print(v);
@@ -20,8 +20,8 @@ void main() async {
   print('>> Adicionando multiplos Users');
 
   await usersCollection.insertMany([
-    { 'user':"Vinicius Parelho", 'senha':"1234", 'ocupacao':"Desenvolvedor", 'funcao': "ADM"},
-    { 'user':"Usuario1", 'senha':"1234", 'ocupacao':"Operador", 'funcao': "USER"}
+    { 'user':"Vinicius Parelho", 'email': 'vinicius@gmail.com', 'senha':"1234", 'ocupacao':"Desenvolvedor", 'funcao': "ADM"},
+    { 'user':"Usuario1", 'email': 'usuario1@gmail.com', 'senha':"1234", 'ocupacao':"Operador", 'funcao': "USER"}
   ]);
   await usersCollection.find().forEach((user) {
     print(user);
